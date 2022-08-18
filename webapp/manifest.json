@@ -99,20 +99,20 @@
       },
       "routes": [
         {
-          "name": "RouteApp",
-          "pattern": "RouteApp",
+          "name": "master",
+          "pattern": "",
           "target": [
-            "TargetApp"
+            "master"
           ]
         }
       ],
       "targets": {
-        "TargetApp": {
+        "master": {
+          "viewName": "Master",
           "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "App",
-          "viewName": "App"
+          "viewLevel": 1,
+          "viewId": "idMasterView",
+          "id": "idMain"
         }
       }
     },

@@ -17,14 +17,16 @@ sap.ui.define([
              * @override
              */
             init: function () {
+				// set the device model
+				this.setModel(models.createDeviceModel(), "device");
+				// set the FLP model
+				this.setModel(models.createFLPModel(), "FLP");
+
                 // call the base component's init function
                 UIComponent.prototype.init.apply(this, arguments);
 
                 // enable routing
                 this.getRouter().initialize();
-
-                // set the device model
-                this.setModel(models.createDeviceModel(), "device");
             }
         });
     }
