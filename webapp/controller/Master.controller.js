@@ -10,13 +10,36 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 
 	return Controller.extend("assembler.com.mx.onchangetraffic.controller.Master", {
 
-		
-//			   
 		onInit: function () {
 			console.log("onInit() of controller called...");
             var oProductModel = new sap.ui.model.json.JSONModel();
             oProductModel.loadData("./model/Products.json");
 			this.getView().setModel(oProductModel);
+
+			this._oTable = this.byId("idProductsTable");
+           // this.bindTable();
+
+			this._oTable.onAfterRendering = function() {
+				if (sap.m.Table.prototype.onAfterRendering) {
+					sap.m.Table.prototype.onAfterRendering.apply(this, arguments);
+				}
+	
+			var oItems = this.getItems();
+				for (var i = 0; i < oItems.length; i++) {
+					var oItem = oItems[i];
+					var obj = oItem.getBindingContext().getObject();
+					var sWeightMeasure = obj.WeightMeasure;
+					var sWeightUnit = obj.WeightUnit;
+					var icon = Formatter.formatIcon(sWeightMeasure,sWeightUnit);
+					if (icon === 'sap-icon://sys-enter-2') {
+						oItem.$().find('.sapUiIcon').addClass('greenIcon');
+					} else if (icon === 'sap-icon://busy')  {
+						oItem.$().find('.sapUiIcon').addClass('yellowIcon');
+					}else if (icon === 'sap-icon://sys-cancel-2')  {
+						oItem.$().find('.sapUiIcon').addClass('redIcon');
+					}
+				}
+			}
 		},
 
 		onPopinLayoutChanged: function() {

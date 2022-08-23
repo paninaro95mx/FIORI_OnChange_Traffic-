@@ -1,1 +1,12 @@
-/* Enter your custom styles here */
+.greenIcon:before {
+    color: green;
+  }
+
+.yellowIcon:before {
+    color: yellow;
+  }
+
+.redIcon:before {
+    color: red;
+  }
+  

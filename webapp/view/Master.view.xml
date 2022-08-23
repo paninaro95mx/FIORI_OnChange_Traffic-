@@ -4,7 +4,6 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:form="sap.ui.layout.form">
-<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>mainViewTitle}">	
@@ -82,7 +81,7 @@
 			<Column
 				minScreenWidth="Desktop"
 				demandPopin="true"
-				hAlign="End">
+				hAlign="Center">
 				<Text text="Dimensions" />
 			</Column>
 			<Column
@@ -92,8 +91,12 @@
 				<Text text="Weight" />
 			</Column>
 			<Column
-				hAlign="End">
+				hAlign="Center">
 				<Text text="Price" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop">
+				<Text text="Approval" />
 			</Column>
 		</columns>
 		<items>
@@ -123,14 +126,20 @@
 								formatOptions: {showMeasure: false}
 							}"
 							unit="{CurrencyCode}" />
+					<ObjectListItem 
+								type="Active" class="MyIcon" 
+								icon="{parts: [
+									{path: 'WeightMeasure'},
+									{path: 'WeightUnit'}
+								],
+								formatter:'assembler.com.mx.onchangetraffic.formatter.Formatter.formatIcon'}">
+					</ObjectListItem>
 				</cells>
 			</ColumnListItem>
 		</items>
 	</Table>
-
-						</content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+</content>
+</Page>
+</pages>
+</App>
 </mvc:View>
