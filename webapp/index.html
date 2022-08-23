@@ -5,26 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Table Input Change with Traffic Lights</title>
-    <style>
-        html, body, body > div, #container, #container-uiarea {
-            height: 100%;
-        }
-    </style>
     <script
         id="sap-ui-bootstrap"
         src="resources/sap-ui-core.js"
         data-sap-ui-theme="sap_fiori_3"
-        data-sap-ui-resourceroots='{
-            "assembler.com.mx.onchangetraffic": "./"
-        }'
+        data-sap-ui-resourceroots='{"assembler.com.mx.onchangetraffic": "./"}'
         data-sap-ui-compatVersion="edge"
+        data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-async="true"
+		data-sap-ui-preload="async"
         data-sap-ui-frameOptions="trusted"
     ></script>
-    <script id="locate-reuse-libs" src="./utils/locate-reuse-libs.js"
-        data-sap-ui-manifest-uri="./manifest.json"
-        data-sap-ui-componentName="assembler.com.mx.onchangetraffic">
-    </script> 
+    <script>
+        var oApp;
+                
+        sap.ui.getCore().attachInit(function () {
+            sap.ui.require([
+                "sap/m/Shell",
+                "sap/ui/core/ComponentContainer",
+                "assembler/com/mx/onchangetraffic/Component"
+            ], function (Shell, ComponentContainer, Component) {
+                        
+                // initialize the UI component
+                new Shell({
+                    app: new ComponentContainer({ 
+                        height : "100%",
+                        component : new Component({
+                            id: "mvcAppComponent"
+                        })
+                    })
+                }).placeAt("content");
+            });
+        });
+    </script>
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div

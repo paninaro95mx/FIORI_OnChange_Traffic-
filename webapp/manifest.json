@@ -44,6 +44,12 @@
   },
   "sap.ui5": {
     "flexEnabled": true,
+    "rootView": {
+      "viewName": "assembler.com.mx.onchangetraffic.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    },
     "dependencies": {
       "minUI5Version": "1.105.0",
       "libs": {
@@ -115,12 +121,6 @@
           "id": "idMain"
         }
       }
-    },
-    "rootView": {
-      "viewName": "assembler.com.mx.onchangetraffic.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "App"
     }
   }
 }
