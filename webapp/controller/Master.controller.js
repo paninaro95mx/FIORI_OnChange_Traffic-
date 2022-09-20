@@ -19,6 +19,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 			this._oTable = this.byId("idProductsTable");
            // this.bindTable();
 
+		   /*
 			this._oTable.onAfterRendering = function() {
 				if (sap.m.Table.prototype.onAfterRendering) {
 					sap.m.Table.prototype.onAfterRendering.apply(this, arguments);
@@ -30,17 +31,61 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 					var obj = oItem.getBindingContext().getObject();
 					var sWeightMeasure = obj.WeightMeasure;
 					var sWeightUnit = obj.WeightUnit;
-					var icon = Formatter.formatIcon(sWeightMeasure,sWeightUnit);
-					if (icon === 'sap-icon://sys-enter-2') {
+					var color = Formatter.getColor(sWeightMeasure,sWeightUnit);
+					if (color === 'GREEN') {
 						oItem.$().find('.sapUiIcon').addClass('greenIcon');
-					} else if (icon === 'sap-icon://busy')  {
+					} else if (color === 'YELLOW')  {
 						oItem.$().find('.sapUiIcon').addClass('yellowIcon');
-					}else if (icon === 'sap-icon://sys-cancel-2')  {
+					}else if (color === 'RED')  {
 						oItem.$().find('.sapUiIcon').addClass('redIcon');
 					}
 				}
+				
 			}
+			*/
 		},
+
+		onLiveChange: function (oEvent) {
+			var sNewValue = oEvent.getParameter("value");
+			this.byId("getValue").setText(sNewValue);
+		},
+
+		onFielTableLiveChange: function (oEvent) {
+			//var oTable = this._oTable.getItems();
+			//var oRow = oTable[0];
+			
+			var oColumnListItem = oEvent.getSource();
+			var oItem = oColumnListItem.getParent();
+			var bContext = oItem.getBindingContext();
+			var obj = oItem.getBindingContext().getObject();
+			console.log(obj.Quantity);
+			//oItem.$().find('.sapUiIcon').toggleClass('redIcon');
+            //var color = Formatter.getToggleColor(obj.Quantity);
+ 			//console.log(color); 
+			 /*
+
+			if (color === 'GREEN') {
+				//oItem.$().find('.sapUiIcon').addClass('greenIcon');
+				//oRow.$().find('.sapUiIcon').removeClass();
+				oItem.$().find('.sapUiIcon').toggleClass('greenIcon');
+				//console.log(oItem.$().find('.sapUiIcon').toggleClass('greenIcon'));
+			} else if (color === 'YELLOW')  {
+				//oItem.$().find('.sapUiIcon').removeClass();
+				//oItem.$().find('.sapUiIcon').addClass('yellowIcon');
+				oItem.$().find('.sapUiIcon').toggleClass('yellowIcon');
+				//console.log(oItem.$().find('.sapUiIcon').toggleClass('yellowIcon'));
+			}else if (color === 'RED')  {
+				//oItem.$().find('.sapUiIcon').removeClass();
+				//oItem.$().find('.sapUiIcon').addClass('redIcon');
+				oItem.$().find('.sapUiIcon').toggleClass('redIcon');
+				//console.log(oItem.$().find('.sapUiIcon').toggleClass('redIcon'));
+			}else{
+				oItem.$().find('.sapUiIcon').removeClass();
+			}
+			
+			*/
+		},
+
 
 		onPopinLayoutChanged: function() {
 			var oTable = this.byId("mvcAppComponent---idMasterView--idProductsTable");

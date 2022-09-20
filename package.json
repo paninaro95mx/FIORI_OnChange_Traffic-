@@ -10,8 +10,8 @@
   ],
   "main": "webapp/index.html",
   "devDependencies": {
-    "@sap/ux-ui5-tooling": "^1.7.1",
-    "@ui5/cli": "^2.14.1"
+    "@sap/ux-ui5-tooling": "^1.7.3",
+    "@ui5/cli": "^2.14.11"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#assemblercommxonchangetraffic-display\"",
@@ -29,5 +29,9 @@
       "@sap/ux-ui5-tooling"
     ]
   },
-  "sapuxLayer": "CUSTOMER_BASE"
+  "sapuxLayer": "CUSTOMER_BASE",
+  "dependencies": {
+    "to": "^0.2.9",
+    "update": "^0.7.4"
+  }
 }

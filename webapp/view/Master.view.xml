@@ -74,9 +74,14 @@
 				<Text text="Product" />
 			</Column>
 			<Column
-				minScreenWidth="Tablet"
-				demandPopin="true">
-				<Text text="Supplier" />
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Quantity" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				hAlign="Center">
+				<Text text="Qty Approval" />
 			</Column>
 			<Column
 				minScreenWidth="Desktop"
@@ -105,8 +110,32 @@
 					<ObjectIdentifier
 						title="{Name}"
 						text="{ProductId}"/>
-					<Text
-						text="{SupplierName}" />
+				    <Input
+						value="{Quantity}" 
+						change=".onFielTableLiveChange" />
+				    <VBox>
+					<core:Icon src="sap-icon://busy" class ="largeIcon" color="green"  
+						visible="{
+							parts: [
+								{path: 'Quantity'}
+							],
+							formatter: 'assembler.com.mx.onchangetraffic.formatter.Formatter.colorGreenVisible'
+						}"/>
+					<core:Icon src="sap-icon://busy" class ="largeIcon" color="yellow" 
+						visible="{
+							parts: [
+								{path: 'Quantity'}
+							],
+							formatter: 'assembler.com.mx.onchangetraffic.formatter.Formatter.colorYellowVisible'
+						}"/>
+					<core:Icon src="sap-icon://busy" class ="largeIcon" color="red" 
+						visible="{
+							parts: [
+								{path: 'Quantity'}
+							],
+							formatter: 'assembler.com.mx.onchangetraffic.formatter.Formatter.colorRedVisible'
+						}"/>
+					</VBox>
 					<Text
 						text="{Width} x {Depth} x {Height} {DimUnit}" />
 					<ObjectNumber
@@ -127,7 +156,7 @@
 							}"
 							unit="{CurrencyCode}" />
 					<ObjectListItem 
-								type="Active" class="MyIcon" 
+								type="Active" 
 								icon="{parts: [
 									{path: 'WeightMeasure'},
 									{path: 'WeightUnit'}
